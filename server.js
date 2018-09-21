@@ -37,7 +37,7 @@ var routes = require("./controllers/scraper.js");
 
 app.use("/", routes);
 
-mongoose.connect("mongodb://heroku_gnzk5747:4d2121nhgnfbdl1pfirsdepk9n@ds125262.mlab.com:25262/heroku_gnzk5747");
+mongoose.connect(MONGODB_URI);
 
 var db = mongoose.connection;
 
