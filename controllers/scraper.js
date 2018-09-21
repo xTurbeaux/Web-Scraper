@@ -36,7 +36,7 @@ router.post("/scrape", function(req, res) {
         // Save an empty result object
         var result = {};
   
-        // Add the text and href of every link, and save them as properties of the result object
+        // Add the text and href of every link, and save them as properties of the result object  am
         result.title = $(this).children("a").text();
   
         console.log("What's the result title? " + result.title);
@@ -98,7 +98,7 @@ router.post("/scrape", function(req, res) {
       if (err) {
         console.log("Not able to delete:" + err);
       } else {
-        console.log("Able to delete, Yay");
+        console.log("Able to delete");
       }
       res.redirect("/savedarticles");
     });
@@ -114,13 +114,13 @@ router.post("/scrape", function(req, res) {
       if (err) {
         console.log("Not able to delete:" + err);
       } else {
-        console.log("Able to delete, Yay");
+        console.log("Able to delete");
       }
       res.send(doc);
     });
   });
   
-  // This will grab an article by it's ObjectId
+  // This will grab an article by it's ObjectId   am
   router.get("/articles/:id", function(req, res) {
   
     console.log("ID is getting read" + req.params.id);
@@ -141,7 +141,7 @@ router.post("/scrape", function(req, res) {
     });
   });
   
-  // Create a new note or replace an existing note
+  // Create a new note or replace an existing note   am
   router.post("/articles/:id", function(req, res) {
   
     // Create a new note and pass the req.body to the entry
@@ -153,7 +153,7 @@ router.post("/scrape", function(req, res) {
         console.log(error);
       } 
       else {
-        // Use the article id to find it and then push note
+        // Use the article id to find it and then push note  am
         Article.findOneAndUpdate({ "_id": req.params.id }, {$push: {notes: doc._id}}, {new: true, upsert: true})
   
         .populate('notes')
